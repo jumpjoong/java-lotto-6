@@ -8,15 +8,22 @@ import java.util.List;
 public class LottoPaper {
     int lottoPrice = 1000;
     int lottoPaperCount;
-    List<Integer> numbers = new ArrayList<>();
+    List<Lotto> lottos = new ArrayList<>();
 
     public LottoPaper(int money) {
         //뭔가 코드가 깔끔하지 않은데?
         this.lottoPaperCount = money / lottoPrice;
         test();
     }
-    //한 줄로 쭉 나오는데 5개 씩 나눠야 할듯 2차원 배열로
+    //6으로 나눠서 Lotto클래스로 생성하는 로직 필요할 듯
     private void test () {
-        numbers = Randoms.pickUniqueNumbersInRange(1, 45, lottoPaperCount);
+        for(int i = 0; i < lottoPaperCount; i++) {
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            lottos.add(new Lotto(numbers));
+        }
+    }
+
+    public List<Lotto> getNumbers () {
+        return lottos;
     }
 }
