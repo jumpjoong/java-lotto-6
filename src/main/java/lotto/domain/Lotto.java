@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-
+//로또 한 줄
 public class Lotto {
     private final List<Integer> numbers;
 

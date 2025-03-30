@@ -1,26 +1,22 @@
 package lotto.domain;
 
-public class ValidateInput {
+import lotto.utils.ValidateInt;
+
+public class ValidatePrice {
     private final int isMoney;
 
-    public ValidateInput(String money) {
+    public ValidatePrice(String money) {
         this.isMoney = validateMoney(money);
     }
 
     // 검증 메소드 집합체
     private int validateMoney(String money) {
-        int isMoney = validateInt(money);
+        //숫자인지 아닌지 먼저 검증
+        int isMoney = ValidateInt.toValidatedInt(money);
         validateThousandUnit(isMoney);
         return isMoney;
     }
-    //숫자 검증
-    private int validateInt (String money) {
-        try {
-            return Integer.parseInt(money);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자만 입력해주세요");
-        }
-    }
+
     //1000단위 검증
     private void validateThousandUnit (int isMoney) {
         int ThousandRex = 1000;

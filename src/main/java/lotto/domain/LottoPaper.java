@@ -8,22 +8,24 @@ import java.util.List;
 public class LottoPaper {
     int lottoPrice = 1000;
     int lottoPaperCount;
-    List<Lotto> lottos = new ArrayList<>();
+    List<Lotto> totalLottos = new ArrayList<>();
 
     public LottoPaper(int money) {
         //뭔가 코드가 깔끔하지 않은데?
         this.lottoPaperCount = money / lottoPrice;
-        test();
+        buyLotto();
     }
-    //6으로 나눠서 Lotto클래스로 생성하는 로직 필요할 듯
-    private void test () {
+
+    private void buyLotto () {
+        System.out.println("\n"+lottoPaperCount + "개를 구매했습니다");
+        //로또 한 줄씩 발행
         for(int i = 0; i < lottoPaperCount; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            lottos.add(new Lotto(numbers));
+            totalLottos.add(new Lotto(numbers));
         }
     }
 
-    public List<Lotto> getNumbers () {
-        return lottos;
+    public List<Lotto> getLottos () {
+        return totalLottos;
     }
 }
