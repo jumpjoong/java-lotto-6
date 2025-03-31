@@ -18,7 +18,8 @@ public class GameController {
         for(Lotto lotto : lottoPaper.getLottos()) {
             System.out.println(lotto.getNumbers());
         }
-        int winningNUmber = input.inputWinningNumberLotto();
-
+        int winningNumber = input.inputWinningNumberLotto();
+        //6자리 검증, 숫자 검증, 겹치는 숫자 검증,
+        int bonusNumber = input.inputBonusNumberLotto();
     }
 }

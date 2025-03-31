@@ -16,8 +16,8 @@ public class Input {
     }
 
     //예외처리 해야함, 위 숫자와 중복 될 경우도 생각 해야함
-    public void inputBonusNumberLotto() {
+    public int inputBonusNumberLotto() {
         System.out.println("보너스 번호를 입력해 주세요.");
-        String bonusNumber = Console.readLine();
+        return ValidateInt.toValidatedInt(Console.readLine());
     }
 }
