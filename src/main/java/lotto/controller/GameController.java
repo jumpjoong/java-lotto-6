@@ -1,25 +1,23 @@
 package lotto.controller;
 
-import lotto.domain.Input;
-import lotto.domain.Lotto;
-import lotto.domain.LottoPaper;
-import lotto.domain.ValidatePrice;
+import lotto.domain.*;
 
+import java.util.List;
+//클래스명은 명확하게
 public class GameController {
     public void run () {
         Input input= new Input();
-        ValidatePrice validateInput = input.inputBuyLotto(); //입력 받고 검증까지 끝냄, 돈 값 넘기려고 구분
-        //돈 값 받아서 로또 발행 클래스로 넘기기 굳이 넘겨야하나? 그냥 return 으로 받고 싶은데
-        int money = validateInput.getIsMoney();
+        Money money = input.inputMoney(); //입력 받고 검증까지 끝냄, 컨트롤러에서 객체로 관리
         // 로또 발행 로직
         LottoPaper lottoPaper = new LottoPaper(money);
-        //lottoPaper의 getLottos는 lotto의 각 객체로 포문을 도는 거임
-        //한 마디로 또 lottoPaper를 겟로또로
-        for(Lotto lotto : lottoPaper.getLottos()) {
+        List<Lotto> lottos = lottoPaper.getLottos();
+        //로또 객체로 그냥 받아와서 사용
+        for(Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers());
         }
-        int winningNumber = input.inputWinningNumberLotto();
+
+        ValidateWinningNumber winningNumber = input.inputWinningNumberLotto();
         //6자리 검증, 숫자 검증, 겹치는 숫자 검증,
-        int bonusNumber = input.inputBonusNumberLotto();
+//        int bonusNumber = input.inputBonusNumberLotto();
     }
 }
