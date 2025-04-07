@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.utils.ValidateInt;
 
 public class Input {
     public Money inputMoney() {
@@ -15,8 +16,8 @@ public class Input {
     }
 
     //예외처리 해야함, 위 숫자와 중복 될 경우도 생각 해야함
-//    public int inputBonusNumberLotto() {
-//        System.out.println("보너스 번호를 입력해 주세요.");
-//        return ValidateInt.toValidatedInt(Console.readLine());
-//    }
+    public int inputBonusNumberLotto() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        return ValidateInt.toValidatedInt(Console.readLine());
+    }
 }

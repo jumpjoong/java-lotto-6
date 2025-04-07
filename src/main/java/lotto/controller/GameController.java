@@ -15,9 +15,13 @@ public class GameController {
         for(Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers());
         }
-
-        ValidateWinningNumber winningNumber = input.inputWinningNumberLotto();
-        //6자리 검증, 숫자 검증, 겹치는 숫자 검증,
-//        int bonusNumber = input.inputBonusNumberLotto();
+        //당첨 번호 입력
+        ValidateWinningNumber winningNumbers = input.inputWinningNumberLotto();
+        //당첨번호 가져오기
+        List<Integer> winningNumber = winningNumbers.getWinningNumber();
+        int bonusNumber = input.inputBonusNumberLotto();
+        WinningLotto winningLotto = new WinningLotto(winningNumber, lottos, bonusNumber);
+        winningLotto.checkAllLotto();
+        winningLotto.getResult();
     }
 }

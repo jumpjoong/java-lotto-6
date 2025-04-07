@@ -67,4 +67,7 @@ public class ValidateWinningNumber {
         }
     }
 
+    public List<Integer> getWinningNumber () {
+        return winningNumber;
+    }
 }
