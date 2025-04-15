@@ -10,17 +10,20 @@ public class Money {
 
     private int validateInputMoney(String inputMoney) {
         try {
-            int money = Integer.parseInt(inputMoney);
+            int money = Integer.parseInt(inputMoney.trim());
             if (money % lottoPrice != 0) {
                 throw new IllegalArgumentException("1000원 단위로 입력해주세요");
             }
             return money;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자만 입력해주세요");
+            throw new IllegalArgumentException("문자 발견");
         }
     }
 
     public int lottoPaperCount() {
         return totalMoney / lottoPrice;
+    }
+    public int getTotalMoney () {
+        return totalMoney;
     }
 }

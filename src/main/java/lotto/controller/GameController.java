@@ -23,5 +23,6 @@ public class GameController {
         WinningLotto winningLotto = new WinningLotto(winningNumber, lottos, bonusNumber);
         winningLotto.checkAllLotto();
         winningLotto.getResult();
+        winningLotto.rateResult(money.getTotalMoney());
     }
 }
