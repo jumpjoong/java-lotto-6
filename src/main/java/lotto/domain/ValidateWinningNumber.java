@@ -5,6 +5,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static lotto.config.RuleErrorMsg.*;
+import static lotto.config.InputErrorMsg.NOT_A_NUMBER;
+
 public class ValidateWinningNumber {
     List<Integer> winningNumber = new ArrayList<>();
 
@@ -17,7 +20,7 @@ public class ValidateWinningNumber {
         String[] winnigNumberArr = input.split(",");
 
         if(!(winnigNumberArr.length == 6)) {
-            throw new IllegalArgumentException("6자리로 입력해주세요");
+            throw new IllegalArgumentException(INVALID_INPUT_SIZE_ERROR.getMsg());
         }
         return validateOnly(winnigNumberArr);
     }
@@ -50,20 +53,20 @@ public class ValidateWinningNumber {
         try {
             return Integer.parseInt(winnigNumber);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("문자 발견");
+            throw new IllegalArgumentException(NOT_A_NUMBER.getMsg());
         }
     }
     //숫자 범위 검증
     private void validateRange(int number) {
         if (number < 1 || number > 45) {
-            throw new IllegalArgumentException("숫자는 1부터 45 사이로 입력해주세요");
+            throw new IllegalArgumentException(NUMBER_RANGE_ERROR.getMsg());
         }
     }
     //증복 숫자 검증
     private static void validateDuplicate(Set<Integer> duplicateNumber, int number) {
         //Set은 중복된 값을 허용하지 않아서 에러 터트림
         if (!duplicateNumber.add(number)) {
-            throw new IllegalArgumentException("중복 숫자 발견");
+            throw new IllegalArgumentException(DUPLICATE_NUMBER_ERROR.getMsg());
         }
     }
 

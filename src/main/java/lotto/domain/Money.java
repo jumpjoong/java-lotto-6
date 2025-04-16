@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import static lotto.config.InputErrorMsg.*;
+
 public class Money {
     private final int totalMoney;
     int lottoPrice = 1000;
@@ -12,11 +14,11 @@ public class Money {
         try {
             int money = Integer.parseInt(inputMoney.trim());
             if (money % lottoPrice != 0) {
-                throw new IllegalArgumentException("1000원 단위로 입력해주세요");
+                throw new IllegalArgumentException(INPUT_NOT_THOUSAND_UNIT.getMsg());
             }
             return money;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("문자 발견");
+            throw new IllegalArgumentException(NOT_A_NUMBER.getMsg());
         }
     }
 

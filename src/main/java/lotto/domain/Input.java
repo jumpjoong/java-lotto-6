@@ -3,21 +3,41 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.utils.ValidateInt;
 
+import static lotto.config.InputMsg.*;
+
 public class Input {
     public Money inputMoney() {
-        System.out.println("구입금액을 입력해 주세요.");
-        String money = Console.readLine();
-        return new Money(money); // 내부에서 검증 포함
+        while(true) {
+            try {
+                System.out.println(INPUT_BUY_MSG.getMsg());
+                String money = Console.readLine();
+                return new Money(money); // 내부에서 검증 포함
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
-    //6자리도 검증 클래스 만들기
+    //당첨 번호 입력
     public ValidateWinningNumber inputWinningNumberLotto () {
-        System.out.println("\n당첨 번호를 입력해 주세요.");
-        return new ValidateWinningNumber(Console.readLine());
+        while (true) {
+            try {
+                System.out.println(INPUT_WINNING_NUMBER_MSG.getMsg());
+                return new ValidateWinningNumber(Console.readLine());
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
-    //예외처리 해야함, 위 숫자와 중복 될 경우도 생각 해야함
+    //보너스 번호 입력
     public int inputBonusNumberLotto() {
-        System.out.println("보너스 번호를 입력해 주세요.");
-        return ValidateInt.toValidatedInt(Console.readLine());
+        while (true) {
+            try{
+                System.out.println(INPUT_BONUS_NUMBER_MSG.getMsg());
+                return ValidateInt.toValidatedInt(Console.readLine());
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 }
